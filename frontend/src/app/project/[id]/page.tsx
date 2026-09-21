@@ -1,7 +1,11 @@
 'use client';
 
 import { useProjectStore } from '@/store/useProjectStore';
-import CesiumMap from '@/components/Map/CesiumMap';
+import dynamic from 'next/dynamic';
+
+const CesiumMap = dynamic(() => import('@/components/Map/CesiumMap'), {
+    ssr: false,
+});
 import DatePicker from '@/components/Controls/DatePicker';
 import TimeSlider from '@/components/Controls/TimeSlider';
 import AnimationPlayer from '@/components/Controls/AnimationPlayer';

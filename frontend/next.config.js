@@ -4,6 +4,7 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false, // Often disabled for Cesium dev due to double render issues
+  swcMinify: false,
   webpack: (config, { webpack, isServer }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
