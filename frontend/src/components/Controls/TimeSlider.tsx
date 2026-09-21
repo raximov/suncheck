@@ -48,15 +48,21 @@ export default function TimeSlider({ time, onChange }: TimeSliderProps) {
                 </button>
             </div>
 
-            <span className="text-xs font-mono font-bold text-slate-800 w-12 text-center bg-slate-100 px-1.5 py-1 rounded border border-slate-200">
-                {time}
-            </span>
+            <input 
+                type="time"
+                value={time}
+                onChange={(e) => {
+                    if (e.target.value) onChange(e.target.value);
+                }}
+                className="text-xs font-mono font-bold text-slate-800 bg-white px-2 py-1 rounded border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm cursor-pointer"
+                title="Soatni qo'lda kiritish"
+            />
 
             <input 
                 type="range" 
                 min="0" 
                 max="1439" 
-                value={initialMinutes || 720}
+                value={Number.isFinite(initialMinutes) ? initialMinutes : 720}
                 onChange={handleSliderChange}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500"
             />
